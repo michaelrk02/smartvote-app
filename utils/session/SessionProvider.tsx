@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useReducer } from "react"
-import { SessionData, SessionDataContext, SessionDispatchContext, sessionInitialData, sessionReducer } from "./context";
+import { SessionDataContext, SessionDispatchContext, sessionInitialData, sessionReducer } from "./context";
 
 export default function SessionProvider({
   children
@@ -11,12 +11,15 @@ export default function SessionProvider({
   const [data, dispatch] = useReducer(sessionReducer, sessionInitialData);
 
   useEffect(() => {
-    dispatch((data) => {
+    dispatch(() => {
+      let values = {};
+
       const storage = localStorage.getItem("_session");
       if (storage) {
-        data = JSON.parse(storage);
+        values = JSON.parse(storage);
       }
-      return data;
+
+      return { initialized: true, values };
     });
   }, []);
 

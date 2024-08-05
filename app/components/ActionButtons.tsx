@@ -20,7 +20,7 @@ export default function ActionButtons() {
   };
 
   return (
-    <Stack direction="row" spacing={2}>
+    <Stack direction="row" spacing={2} justifyContent="center" mb={2}>
       {session.has("token") && (<Button color="error" startIcon={<Logout />} onClick={handleLogout}>Logout</Button>)}
     </Stack>
   );

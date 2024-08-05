@@ -15,11 +15,13 @@ export default function AuthMiddleware({
   const toast = useToast();
 
   useEffect(() => {
-    if (!session.has("token")) {
-      toast.show("error", "You must be logged in to access this page");
-      router.replace("/login");
+    if (session.data.initialized) {
+      if (!session.has("token")) {
+        toast.show("error", "You must be logged in to access this page");
+        router.replace("/login");
+      }
     }
-  }, []);
+  }, [session.data.initialized]);
 
   return children;
 }

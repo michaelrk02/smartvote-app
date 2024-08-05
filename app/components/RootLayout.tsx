@@ -38,7 +38,7 @@ export default function Layout({
           <Typography variant="h5" textAlign="center" padding={1} color={grey[700]}>{header.data.title}</Typography>
           {header.data.prevPage && (
             <Box display="flex" justifyContent="center">
-              <Button component={Link} href={header.data.prevPage} sx={{ width: "fit-content" }} startIcon={<ArrowBack />}>Back</Button>
+              <Button LinkComponent={Link} href={header.data.prevPage} sx={{ width: "fit-content" }} startIcon={<ArrowBack />}>Back</Button>
             </Box>
           )}
           <Divider />

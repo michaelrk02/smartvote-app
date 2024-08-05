@@ -13,10 +13,12 @@ export default function GuestMiddleware({
   const router = useRouter();
 
   useEffect(() => {
-    if (session.has("token")) {
-      router.replace("/vote");
+    if (session.data.initialized) {
+      if (session.has("token")) {
+        router.replace("/vote");
+      }
     }
-  }, []);
+  }, [session.data.initialized]);
 
   return children;
 }

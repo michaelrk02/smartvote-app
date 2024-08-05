@@ -10,6 +10,7 @@ import { HeaderProvider } from "@/utils/header";
 import { ToastProvider } from "@/utils/toast";
 
 import RootLayout from "./components/RootLayout";
+import { AgentProvider } from "@/utils/agent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,9 @@ export default function Layout({
         <HeaderProvider>
           <SessionProvider>
             <ToastProvider>
-              <RootLayout>{children}</RootLayout>
+              <AgentProvider>
+                <RootLayout>{children}</RootLayout>
+              </AgentProvider>
             </ToastProvider>
           </SessionProvider>
         </HeaderProvider>
