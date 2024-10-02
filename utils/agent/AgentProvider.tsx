@@ -23,7 +23,7 @@ export default function AgentProvider({
         };
       });
     }
-  }, [session.data.initialized]);
+  }, [session.data]);
 
   return (
     <AgentDataContext.Provider value={data}>

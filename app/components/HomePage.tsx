@@ -17,11 +17,15 @@ export default function HomePage() {
   useEffect(() => {
     setTitle("Home");
     setPrevPage("/");
-
-    if (!session.has("agent")) {
-      session.set("agent", process.env.NEXT_PUBLIC_DEFAULT_AGENT);
-    }
   }, []);
+
+  useEffect(() => {
+    if (session.data.initialized) {
+      if (!session.has("agent")) {
+        session.set("agent", process.env.NEXT_PUBLIC_DEFAULT_AGENT);
+      }
+    }
+  }, [session.data.initialized]);
 
   const setAgent = (agent: string) => {
     session.set("agent", agent);
